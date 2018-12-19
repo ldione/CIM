@@ -1,0 +1,57 @@
+﻿@model ImageWidgetsPanel
+
+<div class="row">
+    @foreach (var column in Model.Children<ImageWidgetsSection>())
+    {
+        <div class="@Html.GetWidthClass(column) @Html.GetBorderClass(column)">
+            @if (column.ItemsColumn2 == null || !column.ItemsColumn2.Any())
+            {
+                if (column.ItemsColumn1 != null && column.ItemsColumn1.Any())
+                {
+                    @RenderWidgetsColumn(column.ItemsColumn1.Cast<ImageWidgetItem>())
+                }
+            }
+            else
+            {
+                <div class="row">
+                    @if (column.ItemsColumn1 != null && column.ItemsColumn1.Any())
+                    {
+                        <div class="@Html.GetWidthClass(column.WidthColumn1)">
+                            @RenderWidgetsColumn(column.ItemsColumn1.Cast<ImageWidgetItem>())
+                        </div>
+                    }
+                    @if (column.ItemsColumn2 != null && column.ItemsColumn2.Any())
+                    {
+                        <div class="@Html.GetWidthClass(column.WidthColumn2)">
+                            @RenderWidgetsColumn(column.ItemsColumn2.Cast<ImageWidgetItem>())
+                        </div>
+                    }
+                    @if (column.ItemsColumn3 != null && column.ItemsColumn3.Any())
+                    {
+                        <div class="@Html.GetWidthClass(column.WidthColumn3)">
+                            @RenderWidgetsColumn(column.ItemsColumn3.Cast<ImageWidgetItem>())
+                        </div>
+                    }
+                </div>
+            }
+        </div>
+    }
+</div>
+
+@helper RenderWidgetsColumn(IEnumerable<ImageWidgetItem> items)
+{
+    <ul class="list-widgets">
+        @foreach (var item in items.Where(i => i.Link != null && i.Image != null))
+        {
+            <li>
+                <h4 class="nav-subtitle">@item.Link.Name</h4>
+
+                <div class="widget-content">
+                    <a href="@item.Link.Url">
+                        <img src="@item.Image.Url" alt="@item.Link.Name">
+                    </a>
+                </div>
+            </li>
+        }
+    </ul>
+}

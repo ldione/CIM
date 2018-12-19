@@ -1,0 +1,17 @@
+﻿@model EventsListPanel
+
+<h3 class="nav-title">@Model.Name</h3>
+@if (Model.Events != null && Model.Events.Any())
+{
+    <ul class="nav-events">
+        @foreach (var item in Model.Events.Cast<EventLinkItem>().Where(i => i.Link != null))
+        {
+            <li>
+                <div class="events-inner">
+                    <p>@item.Title | @item.Date.ToString("MMM dd. yyyy")</p>
+                    <h3><a href="@item.Link.Url">@item.Link.Name</a></h3>
+                </div>
+            </li>
+        }
+    </ul>
+}

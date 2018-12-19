@@ -1,0 +1,44 @@
+﻿@model Cim.Web.Models.Shared.NavigationModel
+
+<nav class="nav">
+    <div class="shell">
+        <ul>
+            @foreach (var item in Model.Navigation.Children<NavigationItem>())
+            {
+                string itemCssClass = item.WithoutHeader ? "pt20" : "";
+                <li class="first-item has-dropdown">
+                    @if (item.Page != null)
+                    {
+                        <a href="@item.Page.Url">@item.Name</a>
+                    }
+                    <div class="first-item-dropdown @itemCssClass">
+                        <div class="shell-secondary">
+                            <div class="row">
+                                @foreach (var panel in item.Children<Panel>())
+                                {
+                                    var type = panel.DocumentTypeAlias;
+                                    <div class="@Html.GetWidthClass(panel) @Html.GetBorderClass(panel) coln">
+                                        @Html.Partial(type, panel)
+                                    </div>
+                                }
+                            </div>
+                        </div>
+                    </div>
+                </li>
+            }
+
+            <li class="first-item search-item">
+                <i class="far fa-search ico-search"></i>
+                <div class="search">
+                    <form action="?" method="get">
+                        <label for="q" class="hidden">Search</label>
+
+                        <input type="search" name="q" id="q" value="" placeholder="Search" class="search-field">
+
+                        <button type="submit" value="" class="search-btn"><i class="far fa-search"></i></button>
+                    </form>
+                </div>
+            </li>
+        </ul>
+    </div>
+</nav>

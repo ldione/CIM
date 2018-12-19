@@ -1,0 +1,31 @@
+﻿@model SmallImageLinksPanel
+
+<h3 class="nav-title">@Model.Name</h3>
+<ul class="list-publications">
+    @if (Model.ImageLinks != null && Model.ImageLinks.Any())
+    {
+        <li class="first-li">
+            <ul>
+                @foreach (var item in Model.ImageLinks.Cast<ImageWidgetItem>().Where(i => i.Link != null && i.Image != null))
+                {
+                    <li class="second-li">
+                        <a href="@item.Link.Url">
+                            <img src="@item.Image.Url" alt="@item.Link.Name">
+                            <span>@item.Link.Name</span>
+                        </a>
+                    </li>
+                }
+            </ul>
+        </li>
+    }
+
+    @if (Model.Links != null)
+    {
+        foreach (var item in Model.Links.Where(i => !string.IsNullOrEmpty(i.Link)))
+        {
+            <li class="first-li">
+                <a href="@item.Link"><span>@item.Caption</span></a>
+            </li>
+        }
+    }
+</ul>

@@ -1,0 +1,15 @@
+﻿@model ComplexPanel
+
+<div class="row">
+    <div class="col-sm-12">
+        <h3 class="nav-title">@Model.Name</h3>
+    </div>
+    @foreach (var item in Model.Children())
+    {
+        var npw = (INavigationPanelWidth)item;
+        var bdr = (INavigationPanelBorder)item;
+        <div class="@Html.GetWidthClass(npw) @Html.GetBorderClass(bdr)">
+            @Html.Partial(item.DocumentTypeAlias, item)
+        </div>
+    }
+</div>

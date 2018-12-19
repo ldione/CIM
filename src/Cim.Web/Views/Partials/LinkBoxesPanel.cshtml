@@ -1,0 +1,40 @@
+﻿@model LinkBoxesPanel
+
+<h3 class="nav-title">@Model.Name</h3>
+<div class="boxes">
+    @if (Model.TopLink != null)
+    {
+        <div class="box green">
+            <h3>@Model.TopLink.Name</h3>
+            <a href="@Model.TopLink.Url"></a>
+        </div>
+    }
+    <div class="row">
+        <div class="col-sm-6 pr5">
+            @if (Model.LeftLink != null)
+            {
+                <div class="box orange">
+                    <h3>@Model.LeftLink.Name</h3>
+                    <a href="@Model.LeftLink.Url"></a>
+                </div>
+            }
+        </div>
+
+        <div class="col-sm-6 pl5">
+            @if (Model.RightLink != null)
+            {
+                <div class="box blue">
+                    <h3>@Model.RightLink.Name</h3>
+                    <a href="@Model.RightLink.Url"></a>
+                </div>
+            }
+        </div>
+    </div>
+    @if (Model.BottomLink != null)
+    {
+        <div class="box yellow">
+            <h3>@Model.BottomLink.Name</h3>
+            <a href="@Model.BottomLink.Url"></a>
+        </div>
+    }
+</div>

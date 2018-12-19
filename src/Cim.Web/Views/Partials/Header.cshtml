@@ -1,0 +1,47 @@
+﻿@using Cim.Web.Controllers.Surface
+
+<!-- Header -->
+<header class="header">
+    <div class="top-header">
+        <div class="ctn">
+            <div class="logo">
+                <a href="/">
+                    <div class="logo-img">
+                        <img src="/images/logo-cim-icm.png" alt="">
+                    </div>
+                    <div class="logo-text">
+                        Canadian Institute of Mining,<br>
+                        Metallurgy and Petroleum
+                    </div>
+                </a>
+            </div>
+            <div class="actions">
+                <ul>
+                    <li>
+                        <a href="" class="switch-lang">
+                            FR
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" class="btn-login">
+                            <i class="fas fa-sign-in-alt ico-login"></i> Log in
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="" class="login-btn">
+                            <i class="fas fa-user-plus"></i> Join
+                        </a>
+                    </li>
+
+                    <li class="show-sm hamburger">
+                        <div class="bar1"></div>
+                        <div class="bar2"></div>
+                        <div class="bar3"></div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    @(Html.Action<SharedController>("Navigation"))
+</header>

@@ -1,0 +1,32 @@
+﻿@model Umbraco.Web.PublishedContentModels.NavigationPanel
+
+<h3 class="nav-title">@Model.Name</h3>
+<nav class="sub-nav">
+    <ul>
+        @foreach (var item in Model.Children<NavigationPanelItem>().Where(i => i.Link != null))
+        {
+            bool hasSubitems = item.Subitems != null && item.Subitems.Any();
+            string liClass = hasSubitems ? "first-li-has-dropdown" : "";
+            <li class="first-li @liClass">
+                <a href="@item.Link.Url">
+                    @item.Name
+                    @if (hasSubitems)
+                    {
+                        <i class="fal fa-chevron-down ico-down"></i>
+                    }
+                </a>
+                @if (hasSubitems)
+                {
+                    <ul class="sub-nav-dropdown">
+                        @foreach (var subitem in item.Subitems)
+                        {
+                            <li class="second-li">
+                                <a href="@subitem.Link">@subitem.Caption</a>
+                            </li>
+                        }
+                    </ul>
+                }
+            </li>
+        }
+    </ul>
+</nav>

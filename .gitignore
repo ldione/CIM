@@ -1,0 +1,11 @@
+src/.vs/
+*.user
+src/Cim.Web/App_Data/cache/
+src/Cim.Web/App_Data/umbraco.config
+src/Cim.Web/App_Data/Logs/
+src/Cim.Web/App_Data/TEMP/
+src/Cim.Web/bin/
+src/Cim.Web/obj/
+src/Cim.Web/Media/
+src/packages/
+src/Cim.Web/images/tmp/

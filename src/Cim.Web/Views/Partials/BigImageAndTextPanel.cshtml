@@ -1,0 +1,13 @@
+﻿@model BigImageAndTextPanel
+
+<div class="engagement-platform">
+    @if (Model.Image != null)
+    {
+        <div class="engagement-platform-image text-center">
+            <img src="@Model.Image.Url" alt="">
+        </div><!-- /.engagement-platform-image -->
+    }
+    <div class="engagement-platform-content">
+        <p><small>@Model.Text</small></p>
+    </div><!-- /.engagement-platform-content -->
+</div><!-- /.engagement-platform -->

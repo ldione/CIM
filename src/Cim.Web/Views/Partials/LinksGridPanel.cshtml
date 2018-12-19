@@ -1,0 +1,25 @@
+﻿@model LinksGridPanel
+
+<h3 class="nav-title">@Model.Name</h3>
+<ul class="list-member-benefits">
+    @RenderLinks(Model.LinksColumn1)
+    @RenderLinks(Model.LinksColumn2)
+    @RenderLinks(Model.LinksColumn3)
+</ul>
+
+@helper RenderLinks(Umbraco.Web.Models.RelatedLinks relatedLinks)
+{
+    if (relatedLinks != null && relatedLinks.Any(l => !string.IsNullOrEmpty(l.Link)))
+    {
+        <li class="first-li">
+            <ul>
+                @foreach (var item in relatedLinks.Where(l => !string.IsNullOrEmpty(l.Link)))
+                {
+                    <li class="second-li">
+                        <a href="@item.Link">@item.Caption</a>
+                    </li>
+                }
+            </ul>
+        </li>
+    }
+}

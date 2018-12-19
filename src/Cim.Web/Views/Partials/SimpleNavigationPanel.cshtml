@@ -1,0 +1,31 @@
+﻿@model SimpleNavigationPanel
+
+@if (!string.IsNullOrEmpty(Model.Title))
+{
+    <h3 class="nav-title">@Model.Title</h3>
+}
+@if (!string.IsNullOrEmpty(Model.Subtitle))
+{
+    <h4 class="nav-subtitle">@Model.Subtitle</h4>
+}
+
+<ul class="list-technical">
+    @if (Model.Links != null)
+    {
+        foreach (var item in Model.Links.Where(i => !string.IsNullOrEmpty(i.Link)))
+        {
+            <li>
+                <a href="@item.Link">@item.Caption</a>
+            </li>
+        }
+    }
+
+    @if (Model.Image != null && Model.ImageLink != null)
+    {
+        <li class="last">
+            <a href="@Model.ImageLink.Url">
+                <img src="@Model.Image.Url" alt="@Model.ImageLink.Name" style="width: 100%">
+            </a>
+        </li>
+    }
+</ul>
