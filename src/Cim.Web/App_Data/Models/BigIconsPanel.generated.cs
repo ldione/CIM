@@ -46,21 +46,21 @@ namespace Umbraco.Web.PublishedContentModels
 		}
 
 		///<summary>
-		/// First Title
+		/// First Link
 		///</summary>
-		[ImplementPropertyType("firstTitle")]
-		public string FirstTitle
+		[ImplementPropertyType("firstLink")]
+		public Gibe.LinkPicker.Umbraco.Models.LinkPicker FirstLink
 		{
-			get { return this.GetPropertyValue<string>("firstTitle"); }
+			get { return this.GetPropertyValue<Gibe.LinkPicker.Umbraco.Models.LinkPicker>("firstLink"); }
 		}
 
 		///<summary>
-		/// Second Title
+		/// Second Link
 		///</summary>
-		[ImplementPropertyType("secondTitle")]
-		public string SecondTitle
+		[ImplementPropertyType("secondLink")]
+		public Gibe.LinkPicker.Umbraco.Models.LinkPicker SecondLink
 		{
-			get { return this.GetPropertyValue<string>("secondTitle"); }
+			get { return this.GetPropertyValue<Gibe.LinkPicker.Umbraco.Models.LinkPicker>("secondLink"); }
 		}
 	}
 }

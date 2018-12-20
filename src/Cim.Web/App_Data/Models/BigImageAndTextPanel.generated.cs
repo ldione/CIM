@@ -55,6 +55,15 @@ namespace Umbraco.Web.PublishedContentModels
 		}
 
 		///<summary>
+		/// Image Link
+		///</summary>
+		[ImplementPropertyType("imageLink")]
+		public Gibe.LinkPicker.Umbraco.Models.LinkPicker ImageLink
+		{
+			get { return this.GetPropertyValue<Gibe.LinkPicker.Umbraco.Models.LinkPicker>("imageLink"); }
+		}
+
+		///<summary>
 		/// Text
 		///</summary>
 		[ImplementPropertyType("text")]

@@ -84,7 +84,7 @@
 
 .nav { background-color: #000; position: relative; }
 .nav ul { margin-top: 0; padding-left: 0;  }
-.nav .nav-title { color: #71be44;  }
+.nav .nav-title, .nav .nav-title a { color: #71be44;  }
 .nav .nav-subtitle  { color: #003585; font-weight: 700;  min-height: 30px;  }
 
 .nav ul .first-item  { float: left;  }

@@ -4,8 +4,10 @@
 <div class="row pt20">
     <div class="col-sm-6">
         <div class="national-instrument">
-            <p>@Model.LeftBlockTitle</p>
-            <p><strong>@Model.LeftBlockNumber</strong></p>
+            @if (Model.Image != null)
+            {
+                <img src="@Model.Image.Url" />
+            }
         </div>
     </div>
 

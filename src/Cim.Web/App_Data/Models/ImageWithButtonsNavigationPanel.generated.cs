@@ -55,21 +55,12 @@ namespace Umbraco.Web.PublishedContentModels
 		}
 
 		///<summary>
-		/// Left Block Number
+		/// Image
 		///</summary>
-		[ImplementPropertyType("leftBlockNumber")]
-		public string LeftBlockNumber
+		[ImplementPropertyType("image")]
+		public IPublishedContent Image
 		{
-			get { return this.GetPropertyValue<string>("leftBlockNumber"); }
-		}
-
-		///<summary>
-		/// Left Block Title
-		///</summary>
-		[ImplementPropertyType("leftBlockTitle")]
-		public string LeftBlockTitle
-		{
-			get { return this.GetPropertyValue<string>("leftBlockTitle"); }
+			get { return this.GetPropertyValue<IPublishedContent>("image"); }
 		}
 	}
 }

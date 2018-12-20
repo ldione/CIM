@@ -1,14 +1,20 @@
 ﻿@model BigIconsPanel
 
 <ul class="list-widgets list-widgets-membership">
-    <li>
-        <h3 class="nav-title">@Model.FirstTitle</h3>
+    @if (Model.FirstLink != null)
+    {
+        <li>
+            <h3 class="nav-title"><a href="@Model.FirstLink.Url">@Model.FirstLink.Name</a></h3>
 
-        <i class="fas fa-award nav-icon"></i>
-    </li>
-    <li>
-        <h3 class="nav-title">@Model.SecondTitle</h3>
+            <a href="@Model.FirstLink.Url"><i class="fas fa-award nav-icon"></i></a>
+        </li>
+    }
+    @if (Model.SecondLink != null)
+    {
+        <li>
+            <h3 class="nav-title"><a href="@Model.SecondLink.Url">@Model.SecondLink.Name</a></h3>
 
-        <i class="fas fa-suitcase nav-icon"></i>
-    </li>
+            <a href="@Model.SecondLink.Url"><i class="fas fa-suitcase nav-icon"></i></a>
+        </li>
+    }
 </ul>
