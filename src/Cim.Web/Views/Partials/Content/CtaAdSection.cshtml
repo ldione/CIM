@@ -1,0 +1,31 @@
+﻿@model CtaAdSection
+
+@{
+    string backgroundImage = Model.Image != null ? "background-image: url('" + Model.Image.Url + "');" : "";
+}
+
+<!-- CTA FULL IMAGE -->
+<div class="container">
+    <div class="row">
+        <div class="col-lg-8">
+            <div class="cta cta-image-full entry-anim" style="@backgroundImage">
+                <div class="content">
+                    <h2 class="title">@Model.Title</h2>
+                    <p>@Model.Text</p>
+                    <div class="actions">
+                        @if (Model.Link != null)
+                        {
+                            <a href="@Model.Link.Url" class="btn-secondary -white">@Model.Link.Name</a>
+                            <a class="link-image" href="@Model.Link.Url">
+                                <img src="/images/icons/bitmap.png">
+                            </a>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-3 offset-lg-1">
+            <img class="responsive" src="https://via.placeholder.com/300x250" alt="">
+        </div>
+    </div>
+</div>

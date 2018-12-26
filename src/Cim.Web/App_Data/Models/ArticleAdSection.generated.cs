@@ -20,16 +20,16 @@ using Umbraco.ModelsBuilder.Umbraco;
 
 namespace Umbraco.Web.PublishedContentModels
 {
-	/// <summary>Simple Navigation Panel</summary>
-	[PublishedContentModel("simpleNavigationPanel")]
-	public partial class SimpleNavigationPanel : Panel, ISubtitleType, ITitleType
+	/// <summary>Article Ad Section</summary>
+	[PublishedContentModel("articleAdSection")]
+	public partial class ArticleAdSection : ContentSection, IImageType, ISubtitleType, ITextType, ITitleType
 	{
 #pragma warning disable 0109 // new is redundant
-		public new const string ModelTypeAlias = "simpleNavigationPanel";
+		public new const string ModelTypeAlias = "articleAdSection";
 		public new const PublishedItemType ModelItemType = PublishedItemType.Content;
 #pragma warning restore 0109
 
-		public SimpleNavigationPanel(IPublishedContent content)
+		public ArticleAdSection(IPublishedContent content)
 			: base(content)
 		{ }
 
@@ -40,9 +40,36 @@ namespace Umbraco.Web.PublishedContentModels
 		}
 #pragma warning restore 0109
 
-		public static PublishedPropertyType GetModelPropertyType<TValue>(Expression<Func<SimpleNavigationPanel, TValue>> selector)
+		public static PublishedPropertyType GetModelPropertyType<TValue>(Expression<Func<ArticleAdSection, TValue>> selector)
 		{
 			return PublishedContentModelUtility.GetModelPropertyType(GetModelContentType(), selector);
+		}
+
+		///<summary>
+		/// Link 1
+		///</summary>
+		[ImplementPropertyType("link1")]
+		public Gibe.LinkPicker.Umbraco.Models.LinkPicker Link1
+		{
+			get { return this.GetPropertyValue<Gibe.LinkPicker.Umbraco.Models.LinkPicker>("link1"); }
+		}
+
+		///<summary>
+		/// Link 2
+		///</summary>
+		[ImplementPropertyType("link2")]
+		public Gibe.LinkPicker.Umbraco.Models.LinkPicker Link2
+		{
+			get { return this.GetPropertyValue<Gibe.LinkPicker.Umbraco.Models.LinkPicker>("link2"); }
+		}
+
+		///<summary>
+		/// Link 3
+		///</summary>
+		[ImplementPropertyType("link3")]
+		public Gibe.LinkPicker.Umbraco.Models.LinkPicker Link3
+		{
+			get { return this.GetPropertyValue<Gibe.LinkPicker.Umbraco.Models.LinkPicker>("link3"); }
 		}
 
 		///<summary>
@@ -51,25 +78,7 @@ namespace Umbraco.Web.PublishedContentModels
 		[ImplementPropertyType("image")]
 		public IPublishedContent Image
 		{
-			get { return this.GetPropertyValue<IPublishedContent>("image"); }
-		}
-
-		///<summary>
-		/// Image Link
-		///</summary>
-		[ImplementPropertyType("imageLink")]
-		public Gibe.LinkPicker.Umbraco.Models.LinkPicker ImageLink
-		{
-			get { return this.GetPropertyValue<Gibe.LinkPicker.Umbraco.Models.LinkPicker>("imageLink"); }
-		}
-
-		///<summary>
-		/// Links
-		///</summary>
-		[ImplementPropertyType("links")]
-		public Umbraco.Web.Models.RelatedLinks Links
-		{
-			get { return this.GetPropertyValue<Umbraco.Web.Models.RelatedLinks>("links"); }
+			get { return Umbraco.Web.PublishedContentModels.ImageType.GetImage(this); }
 		}
 
 		///<summary>
@@ -79,6 +88,15 @@ namespace Umbraco.Web.PublishedContentModels
 		public string Subtitle
 		{
 			get { return Umbraco.Web.PublishedContentModels.SubtitleType.GetSubtitle(this); }
+		}
+
+		///<summary>
+		/// Text
+		///</summary>
+		[ImplementPropertyType("text")]
+		public string Text
+		{
+			get { return Umbraco.Web.PublishedContentModels.TextType.GetText(this); }
 		}
 
 		///<summary>

@@ -20,24 +20,16 @@ using Umbraco.ModelsBuilder.Umbraco;
 
 namespace Umbraco.Web.PublishedContentModels
 {
-	// Mixin content Type 1122 with alias "navigationPanelTitle"
-	/// <summary>Navigation Panel Title</summary>
-	public partial interface INavigationPanelTitle : IPublishedContent
-	{
-		/// <summary>Title</summary>
-		string Title { get; }
-	}
-
-	/// <summary>Navigation Panel Title</summary>
-	[PublishedContentModel("navigationPanelTitle")]
-	public partial class NavigationPanelTitle : PublishedContentModel, INavigationPanelTitle
+	/// <summary>Slider Section</summary>
+	[PublishedContentModel("sliderSection")]
+	public partial class SliderSection : ContentSection, ILinkType, ITitleType
 	{
 #pragma warning disable 0109 // new is redundant
-		public new const string ModelTypeAlias = "navigationPanelTitle";
+		public new const string ModelTypeAlias = "sliderSection";
 		public new const PublishedItemType ModelItemType = PublishedItemType.Content;
 #pragma warning restore 0109
 
-		public NavigationPanelTitle(IPublishedContent content)
+		public SliderSection(IPublishedContent content)
 			: base(content)
 		{ }
 
@@ -48,9 +40,27 @@ namespace Umbraco.Web.PublishedContentModels
 		}
 #pragma warning restore 0109
 
-		public static PublishedPropertyType GetModelPropertyType<TValue>(Expression<Func<NavigationPanelTitle, TValue>> selector)
+		public static PublishedPropertyType GetModelPropertyType<TValue>(Expression<Func<SliderSection, TValue>> selector)
 		{
 			return PublishedContentModelUtility.GetModelPropertyType(GetModelContentType(), selector);
+		}
+
+		///<summary>
+		/// Slides
+		///</summary>
+		[ImplementPropertyType("slides")]
+		public IEnumerable<IPublishedContent> Slides
+		{
+			get { return this.GetPropertyValue<IEnumerable<IPublishedContent>>("slides"); }
+		}
+
+		///<summary>
+		/// Link
+		///</summary>
+		[ImplementPropertyType("link")]
+		public Gibe.LinkPicker.Umbraco.Models.LinkPicker Link
+		{
+			get { return Umbraco.Web.PublishedContentModels.LinkType.GetLink(this); }
 		}
 
 		///<summary>
@@ -59,10 +69,7 @@ namespace Umbraco.Web.PublishedContentModels
 		[ImplementPropertyType("title")]
 		public string Title
 		{
-			get { return GetTitle(this); }
+			get { return Umbraco.Web.PublishedContentModels.TitleType.GetTitle(this); }
 		}
-
-		/// <summary>Static getter for Title</summary>
-		public static string GetTitle(INavigationPanelTitle that) { return that.GetPropertyValue<string>("title"); }
 	}
 }

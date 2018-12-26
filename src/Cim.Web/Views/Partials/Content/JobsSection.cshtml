@@ -1,0 +1,38 @@
+﻿@model JobsSection
+
+<div class="list-jobs">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 col-lg-12">
+                <div class="content">
+                    <h2>@Model.Title</h2>
+                    <ul class="list">
+                        @foreach (var item in Model.Items.Cast<JobItem>())
+                        {
+                            string dateLabel = item.ClosingDate ? "Closing date" : "Starting date";
+                            <li class="item jsBlockLink entry-anim">
+                                <p class="title">
+                                    @if (item.Link != null)
+                                    {
+                                        <a href="@item.Link.Url">@item.Link.Name</a>
+                                    }
+                                </p>
+                                <p class="info">
+                                    @dateLabel: @item.Date.ToString("MMM dd, yyyy")
+                                </p>
+                            </li>
+                        }
+                    </ul>
+                    @if (Model.Link != null)
+                    {
+                        <a class="btn-secondary entry-anim" href="@Model.Link.Url">@Model.Link.Name</a>
+                    }
+                </div>
+            </div>
+
+            <div class="col-md-6 col-lg-0 hide-lg">
+                <img class="responsive" src="https://via.placeholder.com/300x600">
+            </div>
+        </div>
+    </div>
+</div>

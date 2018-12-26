@@ -1,0 +1,57 @@
+﻿@model NewsEventsSection
+
+<!-- LIST NEWS/EVENTS -->
+<div class="container">
+    <div class="list-events-news">
+        <div class="row">
+            <div class="col-lg-5 news-list">
+                <h2>@Model.NewsTitle</h2>
+                @foreach (var item in Model.NewsItems.Cast<LinkDateCategoryItem>())
+                {
+                    <div class="news entry-anim">
+                        <p class="info">
+                            <span class="cat">@item.Category</span> |
+                            <span class="date">@item.Date.ToString("MMM dd. yyyy")</span>
+                        </p>
+                        <p class="title">
+                            @if (item.Link != null)
+                            {
+                                <a href="@item.Link.Url">@item.Link.Name</a>
+                            }
+                        </p>
+                    </div>
+                }
+                <div class="more entry-anim">
+                    @if (Model.NewsLink != null)
+                    {
+                        <a href="@Model.NewsLink.Url" class="btn-secondary">@Model.NewsLink.Name</a>
+                    }
+                </div>
+            </div>
+            <div class="col-lg-5 offset-lg-2">
+                <h2>@Model.EventsTitle</h2>
+                @foreach (var item in Model.EventItems.Cast<LinkDateCategoryItem>())
+                {
+                    <div class="events entry-anim">
+                        <p class="info">
+                            <span class="cat">@item.Category</span> |
+                            <span class="date">@item.Date.ToString("MMM dd. yyyy")</span>
+                        </p>
+                        <p class="title">
+                            @if (item.Link != null)
+                            {
+                                <a href="@item.Link.Url">@item.Link.Name</a>
+                            }
+                        </p>
+                    </div>
+                }
+                <div class="more entry-anim">
+                    @if (Model.EventsLink != null)
+                    {
+                        <a href="@Model.EventsLink.Url" class="btn-secondary">@Model.EventsLink.Name</a>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

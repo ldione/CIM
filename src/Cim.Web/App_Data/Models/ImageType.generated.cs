@@ -20,24 +20,24 @@ using Umbraco.ModelsBuilder.Umbraco;
 
 namespace Umbraco.Web.PublishedContentModels
 {
-	// Mixin content Type 1123 with alias "navigationPanelSubtitle"
-	/// <summary>Navigation Panel Subtitle</summary>
-	public partial interface INavigationPanelSubtitle : IPublishedContent
+	// Mixin content Type 1150 with alias "imageType"
+	/// <summary>Image Type</summary>
+	public partial interface IImageType : IPublishedContent
 	{
-		/// <summary>Subtitle</summary>
-		string Subtitle { get; }
+		/// <summary>Image</summary>
+		IPublishedContent Image { get; }
 	}
 
-	/// <summary>Navigation Panel Subtitle</summary>
-	[PublishedContentModel("navigationPanelSubtitle")]
-	public partial class NavigationPanelSubtitle : PublishedContentModel, INavigationPanelSubtitle
+	/// <summary>Image Type</summary>
+	[PublishedContentModel("imageType")]
+	public partial class ImageType : PublishedContentModel, IImageType
 	{
 #pragma warning disable 0109 // new is redundant
-		public new const string ModelTypeAlias = "navigationPanelSubtitle";
+		public new const string ModelTypeAlias = "imageType";
 		public new const PublishedItemType ModelItemType = PublishedItemType.Content;
 #pragma warning restore 0109
 
-		public NavigationPanelSubtitle(IPublishedContent content)
+		public ImageType(IPublishedContent content)
 			: base(content)
 		{ }
 
@@ -48,21 +48,21 @@ namespace Umbraco.Web.PublishedContentModels
 		}
 #pragma warning restore 0109
 
-		public static PublishedPropertyType GetModelPropertyType<TValue>(Expression<Func<NavigationPanelSubtitle, TValue>> selector)
+		public static PublishedPropertyType GetModelPropertyType<TValue>(Expression<Func<ImageType, TValue>> selector)
 		{
 			return PublishedContentModelUtility.GetModelPropertyType(GetModelContentType(), selector);
 		}
 
 		///<summary>
-		/// Subtitle
+		/// Image
 		///</summary>
-		[ImplementPropertyType("subtitle")]
-		public string Subtitle
+		[ImplementPropertyType("image")]
+		public IPublishedContent Image
 		{
-			get { return GetSubtitle(this); }
+			get { return GetImage(this); }
 		}
 
-		/// <summary>Static getter for Subtitle</summary>
-		public static string GetSubtitle(INavigationPanelSubtitle that) { return that.GetPropertyValue<string>("subtitle"); }
+		/// <summary>Static getter for Image</summary>
+		public static IPublishedContent GetImage(IImageType that) { return that.GetPropertyValue<IPublishedContent>("image"); }
 	}
 }

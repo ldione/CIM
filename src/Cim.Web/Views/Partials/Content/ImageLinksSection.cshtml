@@ -1,0 +1,29 @@
+﻿@model ImageLinksSection
+
+<!-- STORIES LIST -->
+<div class="container">
+    <div class="list-stories entry-anim">
+        <h2>@Model.Title</h2>
+        <div class="row">
+            @foreach (var item in Model.Items.Cast<ImageWidgetItem>())
+            {
+                <div class="col-md-4">
+                    <div class="story jsBlockLink">
+                        <div class="image">
+                            @if (item.Image != null)
+                            {
+                                <img class="responsive" src="@item.Image.Url" alt="@item.Link?.Name">
+                            }
+                        </div>
+                        <div class="caption">
+                            @if (item.Link != null)
+                            {
+                                <a href="@item.Link.Url">@item.Link.Name</a>
+                            }
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</div>

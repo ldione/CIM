@@ -1,0 +1,38 @@
+﻿@model ImageLinksExtendedSection
+
+<div class="list-magazine">
+    <div class="container entry-anim">
+        <h2>@Model.Title</h2>
+        <div class="row list ">
+            @foreach (var item in Model.Items.Cast<ImageDateWidgetItem>())
+            {
+                <div class="col-md-6 col-lg-4 item">
+                    <div class="magazine jsBlockLink">
+                        <div class="image">
+                            @if (item.Image != null)
+                            {
+                                <img class="responsive" src="@item.Image.Url" alt="@item.Link?.Name">
+                            }
+                        </div>
+                        <div class="caption">
+                            <p class="info">
+                                <span>@item.Tagline</span> | <span>@item.Date.ToString("MMM dd, yyyy")</span>
+                            </p>
+
+                            <div class="title">
+                                @if (item.Link != null)
+                                {
+                                    <a href="@item.Link.Url">@item.Link.Name</a>
+                                }
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+        @if (Model.Link != null)
+        {
+            <a class="btn-secondary" href="@Model.Link.Url">@Model.Link.Name</a>
+        }
+    </div>
+</div>

@@ -1,0 +1,41 @@
+﻿@model ArticleAdSection
+
+<!-- CTA + ADS -->
+<div class="container">
+    <div class="row">
+        <div class="col-lg-8">
+            <div class="cta entry-anim">
+                @if (Model.Image != null)
+                {
+                    <img class="responsive image" src="@Model.Image.Url">
+                }
+                <h4>@Model.Subtitle</h4>
+                <h2>@Model.Title</h2>
+                <p>@Model.Text</p>
+                <div class="row">
+                    @if (Model.Link1 != null)
+                    {
+                        <div class="col-md-4">
+                            <a class="btn-secondary" href="@Model.Link1.Url">@Model.Link1.Name</a>
+                        </div>
+                    }
+                    @if (Model.Link2 != null)
+                    {
+                        <div class="col-md-4">
+                            <a class="btn-secondary" href="@Model.Link2.Url">@Model.Link2.Name</a>
+                        </div>
+                    }
+                    @if (Model.Link2 != null)
+                    {
+                        <div class="col-md-4">
+                            <a class="btn-secondary" href="@Model.Link2.Url">@Model.Link2.Name</a>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-3 offset-lg-1 hide-sm">
+            <img class="responsive" src="https://via.placeholder.com/300x600" alt="">
+        </div>
+    </div>
+</div>

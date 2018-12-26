@@ -1,0 +1,22 @@
+﻿@model CtaImageSection
+
+@{ 
+    string backgroundImage = Model.Image != null ? "background-image: url('" + Model.Image.Url + "');" : "";
+}
+
+<!-- CTA FULL IMAGE -->
+<div class="cta cta-full -left">
+    <div class="container">
+        <div class="content entry-anim">
+            <div class="image" style="@backgroundImage"></div>
+            <div class="caption">
+                <h2 class="title">@Model.Title</h2>
+                <p class="text">@Model.Text</p>
+                @if (Model.Link != null)
+                {
+                    <a href="@Model.Link.Url" class="btn-tertiary">@Model.Link.Name</a>
+                }
+            </div>
+        </div>
+    </div>
+</div>

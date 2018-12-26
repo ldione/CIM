@@ -1,0 +1,36 @@
+﻿@model SliderSection
+
+<!-- SLIDER MEMBERS -->
+<div class="slider-members">
+    <div class="container entry-anim">
+        <h2>@Model.Title</h2>
+        <div class="slider-ctn ">
+            <!-- Slider main container -->
+            <div class="swiper-container">
+                <!-- Additional required wrapper -->
+                <div class="swiper-wrapper">
+                    <!-- Slides -->
+                    @foreach (var item in Model.Slides)
+                    {
+                        <div class="swiper-slide">
+                            <div class="members">
+                                <img src="@item.Url" alt="">
+                            </div>
+                        </div>
+                    }
+                </div>
+            </div>
+            <!-- If we need navigation buttons -->
+            <div class="swiper-button-prev">
+                <i class="icon-arrow-left"></i>
+            </div>
+            <div class="swiper-button-next">
+                <i class="icon-arrow-right"></i>
+            </div>
+        </div>
+        @if (Model.Link != null)
+        {
+            <a class="btn-secondary" href="@Model.Link.Url">@Model.Link.Name</a>
+        }
+    </div>
+</div>
