@@ -365,6 +365,7 @@
     <Compile Include="App_Data\Models\EventsListPanel.generated.cs" />
     <Compile Include="App_Data\Models\File.generated.cs" />
     <Compile Include="App_Data\Models\Folder.generated.cs" />
+    <Compile Include="App_Data\Models\Footer.generated.cs" />
     <Compile Include="App_Data\Models\FullWidthAdSection.generated.cs" />
     <Compile Include="App_Data\Models\HomePage.generated.cs" />
     <Compile Include="App_Data\Models\Image.generated.cs" />

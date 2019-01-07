@@ -23,5 +23,10 @@ namespace Cim.Web.Core
         {
             return GetSettings().FirstChildAs<Navigation>();
         }
+
+        public Footer GetFooter()
+        {
+            return GetSettings().FirstChildAs<Footer>();
+        }
     }
 }

@@ -23,7 +23,8 @@ namespace Cim.Web.Controllers.Surface
         [ChildActionOnly]
         public ActionResult Footer()
         {
-            return PartialView();
+            var footer = publishedContentService.GetFooter();
+            return PartialView(footer);
         }
 
         [ChildActionOnly]
