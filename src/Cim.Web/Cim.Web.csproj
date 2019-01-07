@@ -351,6 +351,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Data\Models\ArticleAdSection.generated.cs" />
+    <Compile Include="App_Data\Models\ArticlePage.generated.cs" />
     <Compile Include="App_Data\Models\BigIconsPanel.generated.cs" />
     <Compile Include="App_Data\Models\BigImageAndTextPanel.generated.cs" />
     <Compile Include="App_Data\Models\BigImagePanel.generated.cs" />
@@ -491,6 +492,7 @@
     <Content Include="Views\Partials\Content\ArticleAdSection.cshtml" />
     <Content Include="Views\Partials\Content\ImageLinksExtendedSection.cshtml" />
     <Content Include="Views\Partials\Content\JobsSection.cshtml" />
+    <Content Include="Views\ArticlePage.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

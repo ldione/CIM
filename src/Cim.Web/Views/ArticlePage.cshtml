@@ -1,0 +1,61 @@
+﻿@inherits Umbraco.Web.Mvc.UmbracoTemplatePage<ContentModels.ArticlePage>
+@using ContentModels = Umbraco.Web.PublishedContentModels;
+@{
+    Layout = "Layout.cshtml";
+
+    var page = Model.Content;
+}
+
+<div class="main">
+    <div class="section-primary">
+        <div class="container">
+            <div class="section-head">
+                <h2>@page.Header</h2>
+            </div><!-- /.section-head -->
+            <div class="row">
+                <div class="col-sm-8 section-content">
+                    <article class="article">
+                        @if (page.Image != null)
+                        {
+                            <div class="article-image">
+                                <img src="@page.Image.Url" alt="" class="responsive">
+                            </div><!-- /.article-image -->
+                        }
+
+                        <div class="article-content">
+                            @page.Text
+                        </div><!-- /.article-content -->
+                    </article><!-- /.article -->
+                </div><!-- /.col-sm-8 section-content -->
+
+                <div class="col-sm-4 section-aside">
+                    <ul class="list-ads">
+                        <li>
+                            <a href="#">
+                                <img src="/images/tmp/ad1.jpg" alt="" class="responsive">
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="#">
+                                <img src="/images/tmp/ad2.jpg" alt="" class="responsive">
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="#">
+                                <img src="/images/tmp/ad3.jpg" alt="" class="responsive">
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="#">
+                                <img src="/images/tmp/ad4.png" alt="" class="responsive">
+                            </a>
+                        </li>
+                    </ul><!-- /.list-ads -->
+                </div><!-- /.col-sm-4 section-aside -->
+            </div><!-- /.row -->
+        </div><!-- /.container -->
+    </div><!-- /.section-primary -->
+</div><!-- /.main -->
