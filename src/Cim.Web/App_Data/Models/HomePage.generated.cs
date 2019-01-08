@@ -44,5 +44,23 @@ namespace Umbraco.Web.PublishedContentModels
 		{
 			return PublishedContentModelUtility.GetModelPropertyType(GetModelContentType(), selector);
 		}
+
+		///<summary>
+		/// Intro Header
+		///</summary>
+		[ImplementPropertyType("introHeader")]
+		public string IntroHeader
+		{
+			get { return this.GetPropertyValue<string>("introHeader"); }
+		}
+
+		///<summary>
+		/// Intro Image
+		///</summary>
+		[ImplementPropertyType("introImage")]
+		public IPublishedContent IntroImage
+		{
+			get { return this.GetPropertyValue<IPublishedContent>("introImage"); }
+		}
 	}
 }

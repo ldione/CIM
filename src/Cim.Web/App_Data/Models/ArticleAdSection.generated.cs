@@ -22,7 +22,7 @@ namespace Umbraco.Web.PublishedContentModels
 {
 	/// <summary>Article Ad Section</summary>
 	[PublishedContentModel("articleAdSection")]
-	public partial class ArticleAdSection : ContentSection, IImageType, ISubtitleType, ITextType, ITitleType
+	public partial class ArticleAdSection : ContentSection, IAdType, IImageType, ISubtitleType, ITextType, ITitleType
 	{
 #pragma warning disable 0109 // new is redundant
 		public new const string ModelTypeAlias = "articleAdSection";
@@ -70,6 +70,33 @@ namespace Umbraco.Web.PublishedContentModels
 		public Gibe.LinkPicker.Umbraco.Models.LinkPicker Link3
 		{
 			get { return this.GetPropertyValue<Gibe.LinkPicker.Umbraco.Models.LinkPicker>("link3"); }
+		}
+
+		///<summary>
+		/// Ad Code
+		///</summary>
+		[ImplementPropertyType("adCode")]
+		public string AdCode
+		{
+			get { return Umbraco.Web.PublishedContentModels.AdType.GetAdCode(this); }
+		}
+
+		///<summary>
+		/// Ad Image
+		///</summary>
+		[ImplementPropertyType("adImage")]
+		public IPublishedContent AdImage
+		{
+			get { return Umbraco.Web.PublishedContentModels.AdType.GetAdImage(this); }
+		}
+
+		///<summary>
+		/// Ad Link Url
+		///</summary>
+		[ImplementPropertyType("adLinkUrl")]
+		public string AdLinkUrl
+		{
+			get { return Umbraco.Web.PublishedContentModels.AdType.GetAdLinkUrl(this); }
 		}
 
 		///<summary>

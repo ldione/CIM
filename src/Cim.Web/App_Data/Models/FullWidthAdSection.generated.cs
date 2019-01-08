@@ -22,7 +22,7 @@ namespace Umbraco.Web.PublishedContentModels
 {
 	/// <summary>Full Width Ad Section</summary>
 	[PublishedContentModel("fullWidthAdSection")]
-	public partial class FullWidthAdSection : ContentSection
+	public partial class FullWidthAdSection : ContentSection, IAdType
 	{
 #pragma warning disable 0109 // new is redundant
 		public new const string ModelTypeAlias = "fullWidthAdSection";
@@ -43,6 +43,33 @@ namespace Umbraco.Web.PublishedContentModels
 		public static PublishedPropertyType GetModelPropertyType<TValue>(Expression<Func<FullWidthAdSection, TValue>> selector)
 		{
 			return PublishedContentModelUtility.GetModelPropertyType(GetModelContentType(), selector);
+		}
+
+		///<summary>
+		/// Ad Code
+		///</summary>
+		[ImplementPropertyType("adCode")]
+		public string AdCode
+		{
+			get { return Umbraco.Web.PublishedContentModels.AdType.GetAdCode(this); }
+		}
+
+		///<summary>
+		/// Ad Image
+		///</summary>
+		[ImplementPropertyType("adImage")]
+		public IPublishedContent AdImage
+		{
+			get { return Umbraco.Web.PublishedContentModels.AdType.GetAdImage(this); }
+		}
+
+		///<summary>
+		/// Ad Link Url
+		///</summary>
+		[ImplementPropertyType("adLinkUrl")]
+		public string AdLinkUrl
+		{
+			get { return Umbraco.Web.PublishedContentModels.AdType.GetAdLinkUrl(this); }
 		}
 	}
 }

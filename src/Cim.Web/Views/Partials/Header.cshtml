@@ -1,4 +1,5 @@
 ﻿@using Cim.Web.Controllers.Surface
+@inherits UmbracoViewPage
 
 <!-- Header -->
 <header class="header">
@@ -10,27 +11,24 @@
                         <img src="/images/logo-cim-icm.png" alt="">
                     </div>
                     <div class="logo-text">
-                        Canadian Institute of Mining,<br>
-                        Metallurgy and Petroleum
+                        @Html.Raw(Umbraco.GetDictionaryValue("Logo Text"))
                     </div>
                 </a>
             </div>
             <div class="actions">
                 <ul>
                     <li>
-                        <a href="" class="switch-lang">
-                            FR
-                        </a>
+                        @(Html.Action<SharedController>("LanguageSwitcher"))
                     </li>
                     <li>
                         <a href="#" class="btn-login">
-                            <i class="fas fa-sign-in-alt ico-login"></i> Log in
+                            <i class="fas fa-sign-in-alt ico-login"></i> @Umbraco.GetDictionaryValue("Log in")
                         </a>
                     </li>
 
                     <li>
                         <a href="" class="login-btn">
-                            <i class="fas fa-user-plus"></i> Join
+                            <i class="fas fa-user-plus"></i> @Umbraco.GetDictionaryValue("Join")
                         </a>
                     </li>
 
