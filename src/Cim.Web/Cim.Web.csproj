@@ -350,6 +350,9 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="App_Data\Models\AdItem.generated.cs" />
+    <Compile Include="App_Data\Models\AdsListType.generated.cs" />
+    <Compile Include="App_Data\Models\AdType.generated.cs" />
     <Compile Include="App_Data\Models\ArticleAdSection.generated.cs" />
     <Compile Include="App_Data\Models\ArticlePage.generated.cs" />
     <Compile Include="App_Data\Models\BigIconsPanel.generated.cs" />
@@ -493,6 +496,8 @@
     <Content Include="Views\Partials\Content\ImageLinksExtendedSection.cshtml" />
     <Content Include="Views\Partials\Content\JobsSection.cshtml" />
     <Content Include="Views\ArticlePage.cshtml" />
+    <Content Include="Views\Partials\AdsList.cshtml" />
+    <Content Include="Views\Partials\AdBanner.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

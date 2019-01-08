@@ -1,0 +1,33 @@
+﻿@model IAdsListType
+
+@{
+    var adsList = Model.GetPropertyValue<IEnumerable<IPublishedContent>>("adsList", true);
+}
+@if (adsList.Any())
+{
+    <ul class="list-ads">
+        @foreach (var item in adsList.Cast<AdItem>())
+        {
+            var hasCode = item.HasValue("adCode");
+            <li>
+                @if (hasCode)
+                {
+                    @Html.Raw(item.AdCode)
+                }
+                else
+                {
+                    <a href="@item.LinkUrl" target="_blank">
+                        @if (item.Image != null)
+                        {
+                            <img src="@item.Image.Url" alt="" class="responsive">
+                        }
+                        else
+                        {
+                            <span>Image is missing</span>
+                        }
+                    </a>
+                }
+            </li>
+        }
+    </ul>
+}

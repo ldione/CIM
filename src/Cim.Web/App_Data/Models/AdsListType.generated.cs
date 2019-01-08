@@ -20,16 +20,24 @@ using Umbraco.ModelsBuilder.Umbraco;
 
 namespace Umbraco.Web.PublishedContentModels
 {
-	/// <summary>CTA Ad Section</summary>
-	[PublishedContentModel("ctaAdSection")]
-	public partial class CtaAdSection : CtaSection, IAdType
+	// Mixin content Type 1209 with alias "adsListType"
+	/// <summary>Ads List Type</summary>
+	public partial interface IAdsListType : IPublishedContent
+	{
+		/// <summary>Ads List</summary>
+		IEnumerable<IPublishedContent> AdsList { get; }
+	}
+
+	/// <summary>Ads List Type</summary>
+	[PublishedContentModel("adsListType")]
+	public partial class AdsListType : PublishedContentModel, IAdsListType
 	{
 #pragma warning disable 0109 // new is redundant
-		public new const string ModelTypeAlias = "ctaAdSection";
+		public new const string ModelTypeAlias = "adsListType";
 		public new const PublishedItemType ModelItemType = PublishedItemType.Content;
 #pragma warning restore 0109
 
-		public CtaAdSection(IPublishedContent content)
+		public AdsListType(IPublishedContent content)
 			: base(content)
 		{ }
 
@@ -40,36 +48,21 @@ namespace Umbraco.Web.PublishedContentModels
 		}
 #pragma warning restore 0109
 
-		public static PublishedPropertyType GetModelPropertyType<TValue>(Expression<Func<CtaAdSection, TValue>> selector)
+		public static PublishedPropertyType GetModelPropertyType<TValue>(Expression<Func<AdsListType, TValue>> selector)
 		{
 			return PublishedContentModelUtility.GetModelPropertyType(GetModelContentType(), selector);
 		}
 
 		///<summary>
-		/// Ad Code
+		/// Ads List
 		///</summary>
-		[ImplementPropertyType("adCode")]
-		public string AdCode
+		[ImplementPropertyType("adsList")]
+		public IEnumerable<IPublishedContent> AdsList
 		{
-			get { return Umbraco.Web.PublishedContentModels.AdType.GetAdCode(this); }
+			get { return GetAdsList(this); }
 		}
 
-		///<summary>
-		/// Ad Image
-		///</summary>
-		[ImplementPropertyType("adImage")]
-		public IPublishedContent AdImage
-		{
-			get { return Umbraco.Web.PublishedContentModels.AdType.GetAdImage(this); }
-		}
-
-		///<summary>
-		/// Ad Link Url
-		///</summary>
-		[ImplementPropertyType("adLinkUrl")]
-		public string AdLinkUrl
-		{
-			get { return Umbraco.Web.PublishedContentModels.AdType.GetAdLinkUrl(this); }
-		}
+		/// <summary>Static getter for Ads List</summary>
+		public static IEnumerable<IPublishedContent> GetAdsList(IAdsListType that) { return that.GetPropertyValue<IEnumerable<IPublishedContent>>("adsList"); }
 	}
 }

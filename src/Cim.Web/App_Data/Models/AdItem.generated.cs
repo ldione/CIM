@@ -20,16 +20,16 @@ using Umbraco.ModelsBuilder.Umbraco;
 
 namespace Umbraco.Web.PublishedContentModels
 {
-	/// <summary>CTA Ad Section</summary>
-	[PublishedContentModel("ctaAdSection")]
-	public partial class CtaAdSection : CtaSection, IAdType
+	/// <summary>Ad Item</summary>
+	[PublishedContentModel("adItem")]
+	public partial class AdItem : PublishedContentModel, IImageType
 	{
 #pragma warning disable 0109 // new is redundant
-		public new const string ModelTypeAlias = "ctaAdSection";
+		public new const string ModelTypeAlias = "adItem";
 		public new const PublishedItemType ModelItemType = PublishedItemType.Content;
 #pragma warning restore 0109
 
-		public CtaAdSection(IPublishedContent content)
+		public AdItem(IPublishedContent content)
 			: base(content)
 		{ }
 
@@ -40,7 +40,7 @@ namespace Umbraco.Web.PublishedContentModels
 		}
 #pragma warning restore 0109
 
-		public static PublishedPropertyType GetModelPropertyType<TValue>(Expression<Func<CtaAdSection, TValue>> selector)
+		public static PublishedPropertyType GetModelPropertyType<TValue>(Expression<Func<AdItem, TValue>> selector)
 		{
 			return PublishedContentModelUtility.GetModelPropertyType(GetModelContentType(), selector);
 		}
@@ -51,25 +51,25 @@ namespace Umbraco.Web.PublishedContentModels
 		[ImplementPropertyType("adCode")]
 		public string AdCode
 		{
-			get { return Umbraco.Web.PublishedContentModels.AdType.GetAdCode(this); }
+			get { return this.GetPropertyValue<string>("adCode"); }
 		}
 
 		///<summary>
-		/// Ad Image
+		/// Link Url
 		///</summary>
-		[ImplementPropertyType("adImage")]
-		public IPublishedContent AdImage
+		[ImplementPropertyType("linkUrl")]
+		public string LinkUrl
 		{
-			get { return Umbraco.Web.PublishedContentModels.AdType.GetAdImage(this); }
+			get { return this.GetPropertyValue<string>("linkUrl"); }
 		}
 
 		///<summary>
-		/// Ad Link Url
+		/// Image
 		///</summary>
-		[ImplementPropertyType("adLinkUrl")]
-		public string AdLinkUrl
+		[ImplementPropertyType("image")]
+		public IPublishedContent Image
 		{
-			get { return Umbraco.Web.PublishedContentModels.AdType.GetAdLinkUrl(this); }
+			get { return Umbraco.Web.PublishedContentModels.ImageType.GetImage(this); }
 		}
 	}
 }

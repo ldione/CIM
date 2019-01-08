@@ -1,0 +1,19 @@
+﻿@model IAdType
+
+@if (Model.HasValue("adCode"))
+{
+    @Html.Raw(Model.AdCode)
+}
+else
+{
+    <a href="@Model.AdLinkUrl">
+        @if (Model.AdImage != null)
+        {
+            <img class="responsive" src="@Model.AdImage.Url" alt="">
+        }
+        else
+        {
+            <span>Image is missing</span>
+        }
+    </a>
+}

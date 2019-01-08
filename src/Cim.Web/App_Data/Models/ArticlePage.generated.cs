@@ -22,7 +22,7 @@ namespace Umbraco.Web.PublishedContentModels
 {
 	/// <summary>Article Page</summary>
 	[PublishedContentModel("articlePage")]
-	public partial class ArticlePage : Page, IImageType
+	public partial class ArticlePage : Page, IAdsListType, IImageType
 	{
 #pragma warning disable 0109 // new is redundant
 		public new const string ModelTypeAlias = "articlePage";
@@ -61,6 +61,15 @@ namespace Umbraco.Web.PublishedContentModels
 		public IHtmlString Text
 		{
 			get { return this.GetPropertyValue<IHtmlString>("text"); }
+		}
+
+		///<summary>
+		/// Ads List
+		///</summary>
+		[ImplementPropertyType("adsList")]
+		public IEnumerable<IPublishedContent> AdsList
+		{
+			get { return Umbraco.Web.PublishedContentModels.AdsListType.GetAdsList(this); }
 		}
 
 		///<summary>
