@@ -498,6 +498,7 @@
     <Content Include="Views\ArticlePage.cshtml" />
     <Content Include="Views\Partials\AdsList.cshtml" />
     <Content Include="Views\Partials\AdBanner.cshtml" />
+    <Content Include="Views\Partials\LanguageSwitcher.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

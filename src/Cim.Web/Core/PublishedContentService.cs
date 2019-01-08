@@ -16,7 +16,10 @@ namespace Cim.Web.Core
 
         public Settings GetSettings()
         {
-            return (Settings)umbraco.TypedContentAtRoot().First(c => c.DocumentTypeAlias == Settings.ModelTypeAlias);
+            var settings = (Settings)umbraco.TypedContentAtRoot()
+                .First(c => c.DocumentTypeAlias == Settings.ModelTypeAlias &&
+                c.GetCulture().Name == umbraco.AssignedContentItem.GetCulture().Name);
+            return settings;
         }
 
         public Navigation GetNavigation()
@@ -27,6 +30,14 @@ namespace Cim.Web.Core
         public Footer GetFooter()
         {
             return GetSettings().FirstChildAs<Footer>();
+        }
+
+        public HomePage GetOtherLanguageHome()
+        {
+            var home = umbraco.AssignedContentItem.AncestorOrSelf(HomePage.ModelTypeAlias);
+            var otherLangHome = umbraco.TypedContentAtRoot()
+                .First(c => c.DocumentTypeAlias == HomePage.ModelTypeAlias && c.Id != home.Id);
+            return (HomePage)otherLangHome;
         }
     }
 }

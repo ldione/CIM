@@ -19,7 +19,7 @@ namespace Cim.Web.Controllers.Surface
         {
             return PartialView();
         }
-        
+
         [ChildActionOnly]
         public ActionResult Footer()
         {
@@ -32,13 +32,20 @@ namespace Cim.Web.Controllers.Surface
         {
             return PartialView();
         }
-        
+
         [ChildActionOnly]
         public ActionResult Navigation()
         {
             var model = new NavigationModel();
             model.Navigation = publishedContentService.GetNavigation();
             return PartialView(model);
+        }
+
+        [ChildActionOnly]
+        public ActionResult LanguageSwitcher()
+        {
+            var otherLangHome = publishedContentService.GetOtherLanguageHome();
+            return PartialView(otherLangHome);
         }
     }
 }

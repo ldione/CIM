@@ -9,11 +9,14 @@
 
 <div class="intro">
     <div class="intro-image">
-        <img src="/images/intro-background.png" alt="">
+        @if (page.IntroImage != null)
+        {
+            <img src="@page.IntroImage.Url" alt="">
+        }
     </div><!-- /.intro-image -->
     <div class="intro-content">
         <div class="container">
-            <h1>Get a Head <p>Start</p> </h1>
+            <h1>@Html.Raw(page.IntroHeader)</h1>
         </div><!-- /.container -->
     </div><!-- /.intro-content -->
 </div><!-- /.intro -->
