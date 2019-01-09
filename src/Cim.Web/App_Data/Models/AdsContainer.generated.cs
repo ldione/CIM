@@ -20,24 +20,16 @@ using Umbraco.ModelsBuilder.Umbraco;
 
 namespace Umbraco.Web.PublishedContentModels
 {
-	// Mixin content Type 1215 with alias "adType"
-	/// <summary>Ad Type</summary>
-	public partial interface IAdType : IPublishedContent
-	{
-		/// <summary>Ad</summary>
-		IPublishedContent Ad { get; }
-	}
-
-	/// <summary>Ad Type</summary>
-	[PublishedContentModel("adType")]
-	public partial class AdType : PublishedContentModel, IAdType
+	/// <summary>Ads Container</summary>
+	[PublishedContentModel("adsContainer")]
+	public partial class AdsContainer : PublishedContentModel
 	{
 #pragma warning disable 0109 // new is redundant
-		public new const string ModelTypeAlias = "adType";
+		public new const string ModelTypeAlias = "adsContainer";
 		public new const PublishedItemType ModelItemType = PublishedItemType.Content;
 #pragma warning restore 0109
 
-		public AdType(IPublishedContent content)
+		public AdsContainer(IPublishedContent content)
 			: base(content)
 		{ }
 
@@ -48,21 +40,9 @@ namespace Umbraco.Web.PublishedContentModels
 		}
 #pragma warning restore 0109
 
-		public static PublishedPropertyType GetModelPropertyType<TValue>(Expression<Func<AdType, TValue>> selector)
+		public static PublishedPropertyType GetModelPropertyType<TValue>(Expression<Func<AdsContainer, TValue>> selector)
 		{
 			return PublishedContentModelUtility.GetModelPropertyType(GetModelContentType(), selector);
 		}
-
-		///<summary>
-		/// Ad
-		///</summary>
-		[ImplementPropertyType("ad")]
-		public IPublishedContent Ad
-		{
-			get { return GetAd(this); }
-		}
-
-		/// <summary>Static getter for Ad</summary>
-		public static IPublishedContent GetAd(IAdType that) { return that.GetPropertyValue<IPublishedContent>("ad"); }
 	}
 }

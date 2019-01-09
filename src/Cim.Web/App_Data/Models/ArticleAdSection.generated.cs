@@ -73,30 +73,12 @@ namespace Umbraco.Web.PublishedContentModels
 		}
 
 		///<summary>
-		/// Ad Code
+		/// Ad
 		///</summary>
-		[ImplementPropertyType("adCode")]
-		public string AdCode
+		[ImplementPropertyType("ad")]
+		public IPublishedContent Ad
 		{
-			get { return Umbraco.Web.PublishedContentModels.AdType.GetAdCode(this); }
-		}
-
-		///<summary>
-		/// Ad Image
-		///</summary>
-		[ImplementPropertyType("adImage")]
-		public IPublishedContent AdImage
-		{
-			get { return Umbraco.Web.PublishedContentModels.AdType.GetAdImage(this); }
-		}
-
-		///<summary>
-		/// Ad Link Url
-		///</summary>
-		[ImplementPropertyType("adLinkUrl")]
-		public string AdLinkUrl
-		{
-			get { return Umbraco.Web.PublishedContentModels.AdType.GetAdLinkUrl(this); }
+			get { return Umbraco.Web.PublishedContentModels.AdType.GetAd(this); }
 		}
 
 		///<summary>
