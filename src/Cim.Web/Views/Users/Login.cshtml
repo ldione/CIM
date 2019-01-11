@@ -1,4 +1,12 @@
-﻿
+﻿@using Cim.Web.Controllers.Surface
+@using Cim.Web.Models.Users
+@inherits UmbracoViewPage<LoginModel>
+
+@{ 
+    var publishedContentService = new PublishedContentService(Umbraco);
+
+}
+
 <div class="login-wrapper">
     <a href="#" class="btn-close-login">
         <i class="fal fa-times"></i>
@@ -8,19 +16,22 @@
         <div class="login-content">
             <h2 class="text-center">Member Login</h2>
             <div class="form-login">
-                <form action="?" method="post">
+                @using (Html.BeginUmbracoForm<UsersController>("Login", FormMethod.Post))
+                {
+                    @Html.AntiForgeryToken()
                     <div class="form-body">
                         <div class="form-row">
                             <div class="form-controls">
-                                <input type="email" class="field" name="field-email" id="field-email" value="" required>
-                                <label for="field-email" class="form-label">E-mail</label>
+                                @Html.TextBoxFor(m => m.Email, new { type = "email", @class = "field", id = "LoginEmail" })
+                                @Html.LabelFor(m => m.Email, new { @class = "form-label" })
+                                @Html.ValidationMessageFor(m => m.Email)
                             </div><!-- /.form-controls -->
                         </div><!-- /.form-row -->
 
                         <div class="form-row">
                             <div class="form-controls">
-                                <input type="password" class="field field-password" name="field-password" id="field-password" value="" required>
-                                <label for="field-password" class="form-label">Password</label>
+                                @Html.TextBoxFor(m => m.Password, new { type = "password", @class = "field field-password", id = "LoginPassword" })
+                                @Html.LabelFor(m => m.Password, new { @class = "form-label" })
                                 <a href="#" class="show-hide-pass">
                                     <i class="fal fa-eye"></i>
                                 </a>
@@ -32,7 +43,7 @@
                         <button type="submit" class="form-btn">Log In</button>
                         <a href="#" class="btn-forgot-pass">Forgotten password?</a>
                     </div><!-- /.form-actions -->
-                </form>
+                }
             </div><!-- /.login-content -->
         </div><!-- /.form-login -->
     </div><!-- /.login-head -->
@@ -41,7 +52,7 @@
         <h3>Join</h3>
         <div class="login-content">
             <h2>Not a member? <br>Register for a free account.</h2>
-            <a href="#" class="btn-reg">Register</a>
+            <a href="@publishedContentService.GetCreateAccountPage().Url" class="btn-reg">Register</a>
         </div><!-- /.login-content -->
     </div><!-- /.login-body -->
 </div><!-- /.login-wrapper -->

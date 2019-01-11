@@ -1,0 +1,46 @@
+﻿@using Cim.Web.Controllers.Surface
+@inherits Umbraco.Web.Mvc.UmbracoTemplatePage<ContentModels.CreateAccountPage>
+@using ContentModels = Umbraco.Web.PublishedContentModels;
+@{
+    Layout = "Layout.cshtml";
+
+    var page = Model.Content;
+}
+
+<div class="main">
+    <div class="register">
+        <div class="register-header">
+            <div class="shell">
+                <h1>@page.Header</h1>
+
+                <div class="register-content">
+                    @page.Text
+                </div><!-- /.registe-content -->
+            </div><!-- /.shell -->
+
+            <a href="#" class="btn-scroll-down">
+                <i class="fal fa-chevron-down"></i>
+            </a>
+        </div><!-- /.register-header -->
+
+        <div class="register-body">
+            <div class="shell">
+                <div class="row">
+                    <div class="col-sm-6">
+                        <div class="form-register">
+                            @(Html.Action<UsersController>("Create"))
+
+                        </div><!-- /.form-register -->
+                    </div><!-- /.col-sm-6 -->
+
+                    <div class="col-sm-6">
+                        <div class="login-box-content">
+                            <h2 class="text-center">OR</h2>
+                            <a href="#" class="large-login-btn">Login</a>
+                        </div><!-- /.login-box-content -->
+                    </div><!-- /.col-sm-6 -->
+                </div><!-- /.row -->
+            </div><!-- /.shell -->
+        </div><!-- /.register-body -->
+    </div><!-- /.register -->
+</div><!-- /.main -->

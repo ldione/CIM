@@ -141,6 +141,9 @@
     <Reference Include="MiniProfiler, Version=2.1.0.0, Culture=neutral, PublicKeyToken=b44f9351044011a3, processorArchitecture=MSIL">
       <HintPath>..\packages\MiniProfiler.2.1.0\lib\net40\MiniProfiler.dll</HintPath>
     </Reference>
+    <Reference Include="MissingCode.Umbraco.DictionaryMetadataProvider, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\MissingCode.Umbraco.DictionaryMetadataProvider.1.0.5.2\lib\MissingCode.Umbraco.DictionaryMetadataProvider.dll</HintPath>
+    </Reference>
     <Reference Include="MySql.Data, Version=6.9.12.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
       <HintPath>..\packages\MySql.Data.6.9.12\lib\net45\MySql.Data.dll</HintPath>
     </Reference>
@@ -351,6 +354,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Data\Models\AdItem.generated.cs" />
+    <Compile Include="App_Data\Models\AdsContainer.generated.cs" />
     <Compile Include="App_Data\Models\AdsListType.generated.cs" />
     <Compile Include="App_Data\Models\AdType.generated.cs" />
     <Compile Include="App_Data\Models\ArticleAdSection.generated.cs" />
@@ -361,6 +365,7 @@
     <Compile Include="App_Data\Models\ComplexPanel.generated.cs" />
     <Compile Include="App_Data\Models\ContentSection.generated.cs" />
     <Compile Include="App_Data\Models\ContentSectionsContainer.generated.cs" />
+    <Compile Include="App_Data\Models\CreateAccountPage.generated.cs" />
     <Compile Include="App_Data\Models\CtaAdSection.generated.cs" />
     <Compile Include="App_Data\Models\CtaImageSection.generated.cs" />
     <Compile Include="App_Data\Models\CtaSection.generated.cs" />
@@ -371,6 +376,7 @@
     <Compile Include="App_Data\Models\Folder.generated.cs" />
     <Compile Include="App_Data\Models\Footer.generated.cs" />
     <Compile Include="App_Data\Models\FullWidthAdSection.generated.cs" />
+    <Compile Include="App_Data\Models\HeaderType.generated.cs" />
     <Compile Include="App_Data\Models\HomePage.generated.cs" />
     <Compile Include="App_Data\Models\Image.generated.cs" />
     <Compile Include="App_Data\Models\ImageDateWidgetItem.generated.cs" />
@@ -397,6 +403,7 @@
     <Compile Include="App_Data\Models\NewsEventsSection.generated.cs" />
     <Compile Include="App_Data\Models\Page.generated.cs" />
     <Compile Include="App_Data\Models\Panel.generated.cs" />
+    <Compile Include="App_Data\Models\RichTextType.generated.cs" />
     <Compile Include="App_Data\Models\Settings.generated.cs" />
     <Compile Include="App_Data\Models\SimpleNavigationPanel.generated.cs" />
     <Compile Include="App_Data\Models\SliderSection.generated.cs" />
@@ -405,9 +412,13 @@
     <Compile Include="App_Data\Models\TextType.generated.cs" />
     <Compile Include="App_Data\Models\TitleType.generated.cs" />
     <Compile Include="Controllers\Surface\SharedController.cs" />
+    <Compile Include="Controllers\Surface\UsersController.cs" />
     <Compile Include="Core\HtmlHelperExtensions.cs" />
     <Compile Include="Core\PublishedContentService.cs" />
+    <Compile Include="Core\Users\UsersService.cs" />
     <Compile Include="Models\Shared\NavigationModel.cs" />
+    <Compile Include="Models\Users\CreateUserModel.cs" />
+    <Compile Include="Models\Users\LoginModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -473,7 +484,7 @@
     <Content Include="Views\Partials\Header.cshtml" />
     <Content Include="Views\Partials\Navigation.cshtml" />
     <Content Include="Views\Partials\Footer.cshtml" />
-    <Content Include="Views\Partials\Login.cshtml" />
+    <Content Include="Views\Users\Login.cshtml" />
     <Content Include="Views\Partials\NavigationPanel.cshtml" />
     <Content Include="Views\Partials\ComplexPanel.cshtml" />
     <Content Include="Views\Partials\ImageWidgetsPanel.cshtml" />
@@ -499,6 +510,8 @@
     <Content Include="Views\Partials\AdsList.cshtml" />
     <Content Include="Views\Partials\AdBanner.cshtml" />
     <Content Include="Views\Partials\LanguageSwitcher.cshtml" />
+    <Content Include="Views\CreateAccountPage.cshtml" />
+    <Content Include="Views\Users\Create.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

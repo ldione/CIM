@@ -1,0 +1,77 @@
+﻿@using Cim.Web.Controllers.Surface
+@using Cim.Web.Models.Users
+@inherits UmbracoViewPage<CreateUserModel>
+
+@using (Html.BeginUmbracoForm<UsersController>("Create", FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+    <div class="form-head">
+        <h2 class="text-center">@Umbraco.GetDictionaryValue("Create Account Form Header")</h2>
+    </div><!-- /.form-head -->
+    @Html.ValidationSummary(true)
+    <div class="form-body">
+        <div class="form-row">
+            <div class="row">
+                <div class="col-sm-6">
+                    <div class="form-controls">
+                        @Html.TextBoxFor(m => m.FirstName, new { @class = "field" })
+                        @Html.LabelFor(m => m.FirstName, new { @class = "form-label" })
+                        @Html.ValidationMessageFor(m => m.FirstName)
+                    </div><!-- /.form-controls -->
+                </div><!-- /.col-sm-6 -->
+
+                <div class="col-sm-6">
+                    <div class="form-controls">
+                        @Html.TextBoxFor(m => m.LastName, new { @class = "field" })
+                        @Html.LabelFor(m => m.LastName, new { @class = "form-label" })
+                        @Html.ValidationMessageFor(m => m.LastName)
+                    </div><!-- /.form-controls -->
+                </div><!-- /.col-sm-6 -->
+            </div><!-- /.row -->
+        </div><!-- /.form-row -->
+
+        <div class="form-row">
+            <div class="form-controls">
+                @Html.TextBoxFor(m => m.Email, new { type = "email", @class = "field" })
+                @Html.LabelFor(m => m.Email, new { @class = "form-label" })
+                @Html.ValidationMessageFor(m => m.Email)
+            </div><!-- /.form-controls -->
+        </div><!-- /.form-row -->
+
+        <div class="form-row">
+            <div class="form-controls">
+                @Html.TextBoxFor(m => m.Password, new { type = "password", @class = "field field-password reg-field-password" })
+                @Html.LabelFor(m => m.Password, new { @class = "form-label" })
+
+                <a href="#" class="show-hide-pass">
+                    <i class="fal fa-eye"></i>
+                </a>
+                @Html.ValidationMessageFor(m => m.Password)
+            </div><!-- /.form-controls -->
+        </div><!-- /.form-row -->
+
+        <div class="form-row">
+            <div class="form-controls">
+                @Html.TextBoxFor(m => m.ConfirmPassword, new { type = "password", @class = "field field-password field-confirm-password" })
+                @Html.LabelFor(m => m.ConfirmPassword, new { @class = "form-label" })
+
+                <a href="#" class="show-hide-pass">
+                    <i class="fal fa-eye"></i>
+                </a>
+
+                <span class="pass-check correct-pass">
+                    <i class="fal fa-check"></i>
+                </span>
+
+                <span class="pass-check incorrect-pass">
+                    <i class="fal fa-times"></i>
+                </span>
+                @Html.ValidationMessageFor(m => m.ConfirmPassword)
+            </div><!-- /.form-controls -->
+        </div><!-- /.form-row -->
+
+        <div class="form-actions">
+            <button type="submit" class="btn-main">@Umbraco.GetDictionaryValue("Create an account")</button>
+        </div><!-- /.form-actions -->
+    </div><!-- /.form-body -->
+}

@@ -1,6 +1,10 @@
 ﻿@using Cim.Web.Controllers.Surface
 @inherits UmbracoViewPage
 
+@{
+    var publishedContentService = new PublishedContentService(Umbraco);
+}
+
 <!-- Header -->
 <header class="header">
     <div class="top-header">
@@ -20,18 +24,28 @@
                     <li>
                         @(Html.Action<SharedController>("LanguageSwitcher"))
                     </li>
-                    <li>
-                        <a href="#" class="btn-login">
-                            <i class="fas fa-sign-in-alt ico-login"></i> @Umbraco.GetDictionaryValue("Log in")
-                        </a>
-                    </li>
+                    @if (!Members.IsLoggedIn())
+                    {
+                        <li>
+                            <a href="#" class="btn-login">
+                                <i class="fas fa-sign-in-alt ico-login"></i> @Umbraco.GetDictionaryValue("Log in")
+                            </a>
+                        </li>
 
-                    <li>
-                        <a href="" class="login-btn">
-                            <i class="fas fa-user-plus"></i> @Umbraco.GetDictionaryValue("Join")
-                        </a>
-                    </li>
-
+                        <li>
+                            <a href="@publishedContentService.GetCreateAccountPage().Url" class="login-btn">
+                                <i class="fas fa-user-plus"></i> @Umbraco.GetDictionaryValue("Join")
+                            </a>
+                        </li>
+                    }
+                    else
+                    {
+                        <li>
+                            <a href="/Umbraco/Surface/Users/Logout" class="login-btn">
+                                <i class="fas fa-sign-out-alt ico-login"></i> @Umbraco.GetDictionaryValue("Log out")
+                            </a>
+                        </li>
+                    }
                     <li class="show-sm hamburger">
                         <div class="bar1"></div>
                         <div class="bar2"></div>

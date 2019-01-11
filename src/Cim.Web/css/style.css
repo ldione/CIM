@@ -30,6 +30,7 @@
 .gray-image { filter: grayscale(100%); -webkit-transition: all .5s; -o-transition: all .5s; transition: all .5s; }
 .gray-image:hover { filter: grayscale(0); }
 
+.membership-item,
 .radio label:after,
 .account-box .account-box-head i,
 .cart-popup,
@@ -45,7 +46,11 @@
 .form-label,
 .form-login .btn-forgot-pass:after,
 .form-login .form-btn,
-.btn-reg { -webkit-transition: all .4s; -o-transition: all .4s; transition: all .4s;  }
+.btn-reg {
+    -webkit-transition: all .4s;
+    -o-transition: all .4s;
+    transition: all .4s;
+}
 
 .body-layover-nav,
 .body-layover { position: fixed; top: 0; left: 0; width: 100%; height: 100vh; background-color: rgba(0,0,0, .7); z-index: 100; opacity: 0; visibility: hidden; 
@@ -291,9 +296,86 @@
 	Register
 \* ------------------------------------------------------------ */
 
+.register .register-header {
+    background-color: rgb(0, 0, 70);
+    background-image: linear-gradient(-40deg, rgba(28, 181, 224, 0.8), rgba(255, 255, 255, 0));
+    padding: 200px 0;
+    text-align: center;
+    position: relative;
+}
 
-.register .register-header { background-color: rgb(0, 0, 70); background-image: linear-gradient(-40deg, rgba(28, 181, 224, 0.8), rgba(255, 255, 255, 0)); padding: 200px 0; text-align: center; }
-.register .register-header h1 { color: #fff; padding-bottom: 100px; font-weight: 400; text-align: center;  }
+    .register .register-header h1 {
+        color: #fff;
+        font-weight: 400;
+        text-align: center;
+    }
+
+    .register .register-header .btn-scroll-down {
+        color: #fff;
+        font-size: 50px;
+        position: absolute;
+        bottom: 25px;
+        left: 50%;
+        -webkit-transform: translateX(-50%);
+        -ms-transform: translateX(-50%);
+        -o-transform: translateX(-50%);
+        transform: translateX(-50%);
+    }
+
+        .register .register-header .btn-scroll-down:hover {
+            bottom: 10px;
+        }
+
+.register .register-content p {
+    color: #fff;
+    padding-bottom: 100px;
+}
+
+
+
+.login-box-content {
+    padding: 500px 0;
+    text-align: center;
+    position: relative;
+}
+
+    .login-box-content h2 {
+        position: absolute;
+        top: 101px;
+        left: 50%;
+        font-weight: 300;
+    }
+
+        .login-box-content h2:after {
+            content: '';
+            position: absolute;
+            bottom: -50px;
+            left: 50%;
+            width: 100px;
+            height: 2px;
+            background-color: rgb(0, 0, 70);
+            background-image: linear-gradient(40deg, rgba(28, 181, 224, 0.8), rgba(28, 181, 224, 0.8));
+            -webkit-transform: translateX(-50%);
+            -ms-transform: translateX(-50%);
+            -o-transform: translateX(-50%);
+            transform: translateX(-50%);
+        }
+
+.large-login-btn {
+    font-size: 50px;
+    color: #888;
+    border: 3px solid #71be47;
+    padding: 50px 150px;
+    margin-left: 50px;
+}
+
+    .large-login-btn:hover {
+        color: #fff;
+        background-color: #71be47;
+        -webkit-box-shadow: 0 10px 10px #a3a3a3;
+        box-shadow: 0 10px 10px #a3a3a3;
+        margin-top: -10px;
+    }
 
 /* ------------------------------------------------------------ *\
 	Steps
@@ -304,11 +386,16 @@
 .step { position: relative;  display: inline-block; width: 32.33%; text-align: center; vertical-align: top; opacity: .5;  	}
 .step p { color: #fff; padding-top: 20px; margin-bottom: 0; }
 .step.active { opacity: 1;  }
-.step:after  { position: absolute; content: ''; height: 1px; background-color: #fff; width: 60%; display: inline-block; left: 70%; top: 50%; 
--webkit-transform: translateY(-50%); 
-    -ms-transform: translateY(-50%); 
-     -o-transform: translateY(-50%); 
-        transform: translateY(-50%);  }
+    .step:after {
+        position: absolute;
+        content: '';
+        height: 1px;
+        background-color: #fff;
+        width: 60%;
+        display: inline-block;
+        left: 70%;
+        top: 65px;
+    }
 .step:last-child:after { display: none;  }
 
 .step .step-content { padding-top: 45px; display: inline-block; border-radius: 50%; background-color: #fff; width: 120px; height: 120px; text-align: center; position: relative;  }
@@ -531,6 +618,49 @@
 .table-memberships .th  { border-bottom: 1px solid #ccc; border-right: 1px solid #ccc; }
 .table-memberships .td:last-child, 
 .table-memberships .th:last-child  { border-right: 0; }
+/* ------------------------------------------------------------ *\
+	Section Membership
+\* ------------------------------------------------------------ */
+
+.memebrships-section {
+    padding: 100px 0;
+}
+
+/*  Membership  */
+
+.membership-item {
+    border: 1px solid #ccc;
+    min-height: 670px;
+    padding: 10px 15px;
+    position: relative;
+    padding-bottom: 100px;
+    margin-bottom: 30px;
+}
+
+    .membership-item .membership-title {
+        color: #888;
+        line-height: 1.4;
+    }
+
+    .membership-item .membership-images img {
+        width: 50%;
+    }
+
+    .membership-item .membership-actions {
+        position: absolute;
+        bottom: 15px;
+        left: 0;
+        width: 100%;
+    }
+
+        .membership-item .membership-actions a {
+            font-size: 14px;
+        }
+
+    .membership-item:hover {
+        -webkit-box-shadow: 0 10px 10px #a3a3a3;
+        box-shadow: 0 10px 10px #a3a3a3;
+    }
 
 /* ------------------------------------------------------------ *\
 	Account Box
@@ -616,7 +746,9 @@
 	.shell { padding: 0 20px; }
 }
 
-
+.field-validation-error{
+    color: #ff5555;
+}
 
 
 

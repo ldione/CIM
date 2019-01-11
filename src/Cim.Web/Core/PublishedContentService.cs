@@ -14,6 +14,12 @@ namespace Cim.Web.Core
             this.umbraco = umbraco;
         }
 
+        public HomePage GetHomePage()
+        {
+            var home = (HomePage)umbraco.AssignedContentItem.AncestorOrSelf(HomePage.ModelTypeAlias);
+            return home;
+        }
+
         public Settings GetSettings()
         {
             var settings = (Settings)umbraco.TypedContentAtRoot()
@@ -34,10 +40,16 @@ namespace Cim.Web.Core
 
         public HomePage GetOtherLanguageHome()
         {
-            var home = umbraco.AssignedContentItem.AncestorOrSelf(HomePage.ModelTypeAlias);
+            var home = GetHomePage();
             var otherLangHome = umbraco.TypedContentAtRoot()
                 .First(c => c.DocumentTypeAlias == HomePage.ModelTypeAlias && c.Id != home.Id);
             return (HomePage)otherLangHome;
+        }
+
+        public CreateAccountPage GetCreateAccountPage()
+        {
+            var result = GetHomePage().FirstChildAs<CreateAccountPage>();
+            return result;
         }
     }
 }
